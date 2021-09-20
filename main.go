@@ -97,7 +97,7 @@ func main() {
 		newTeleLog,
 	)
 
-	err = n.Notify(mapper.GetMap(), formUsers.GetUsers())
+	err = n.Notify(formUsers.GetUsers())
 	if err != nil {
 		logger.Fatalf("error notify: %s", err)
 	}
@@ -108,19 +108,20 @@ func addUsersForm(s sheet.Sheet, config Config, logger *zap.SugaredLogger, formU
 	if err != nil {
 		logger.Fatalf("failed to get sheet data: %s", err)
 	}
-	sheet, err := spreadsheet.SheetByIndex(0)
+	gotSheet, err := spreadsheet.SheetByIndex(0)
 	if err != nil {
 		logger.Fatalf("failed to get sheet data: %s", err)
 	}
 	sheet1Config := users.SheetConfig{
-		TrackIdx:      1,
-		MailIdx:       2,
-		LeaderMailIdx: 3,
-		HaveTeam:      true,
-		UserTypeIdx:   nil,
-		Skip:          config.SkipSheet,
+		MailIdx:             1,
+		NameIdx:             2,
+		PhoneIdx:            3,
+		SocialLinkIdx:       5,
+		CityIdx:             6,
+		ExperienceAnswerIdx: 9,
+		Skip:                config.SkipSheet,
 	}
-	err = formUsers.AddUsers(sheet, &sheet1Config, users.FormTypeWithTeam)
+	err = formUsers.AddUsers(gotSheet, &sheet1Config)
 	if err != nil {
 		logger.Fatalf("failed to make users map: %s", err)
 	}
