@@ -64,13 +64,15 @@ func (n notifier) Notify(users users.Users) error {
 			}
 			continue
 		}
-		msg := fmt.Sprintf("Новая заявка"+
+		msg := fmt.Sprintf("Новая заявка\n"+
 			"Имя: %s\n "+
+			"Возраст: %s\n "+
 			"Город: %s\n"+
 			"Телефон: %s\n "+
 			"Почта: %s\n "+
 			"Чего хочу: %s\n",
 			user.FullName,
+			user.Age,
 			user.City,
 			user.Phone,
 			user.Email,

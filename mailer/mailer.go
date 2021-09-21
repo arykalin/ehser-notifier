@@ -19,6 +19,7 @@ type mailer struct {
 	SMTPPort     int
 	DebugAddress string
 	CCAddress    string
+	dryRun       bool
 }
 
 const (
@@ -56,6 +57,9 @@ func (m mailer) SendGreeting(user users.User) (err error) {
 }
 
 func (m mailer) sendMail(user users.User, subj string, body string) (err error) {
+	if m.dryRun {
+		return nil
+	}
 	//if debug address is set send mail to it
 	var toEmail string
 	if m.DebugAddress != "" {
@@ -121,5 +125,6 @@ func NewMailer(
 		SMTPPort:     port,
 		DebugAddress: debugAddress,
 		CCAddress:    ccAddress,
+		dryRun:       true,
 	}
 }

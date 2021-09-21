@@ -18,6 +18,7 @@ type User struct {
 	SocialLink       string
 	City             string
 	ExperienceAnswer string
+	Age              string
 }
 
 type Users = map[string]User
@@ -29,6 +30,7 @@ type SheetConfig struct {
 	SocialLinkIdx       int
 	CityIdx             int
 	ExperienceAnswerIdx int
+	AgeIdx              int
 	Skip                int
 }
 
@@ -61,6 +63,12 @@ func (u *users) AddUsers(sheet *spreadsheet.Sheet, config *SheetConfig) (err err
 			fullName = sheet.Rows[i][config.NameIdx].Value
 		}
 		user.FullName = fullName
+
+		var age string
+		if len(sheet.Rows[i]) > config.AgeIdx {
+			age = sheet.Rows[i][config.AgeIdx].Value
+		}
+		user.Age = age
 
 		var phone string
 		if len(sheet.Rows[i]) > config.PhoneIdx {

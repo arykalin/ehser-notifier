@@ -112,16 +112,17 @@ func addUsersForm(s sheet.Sheet, config Config, logger *zap.SugaredLogger, formU
 	if err != nil {
 		logger.Fatalf("failed to get sheet data: %s", err)
 	}
-	sheet1Config := users.SheetConfig{
+	sheetConfig := users.SheetConfig{
 		MailIdx:             1,
 		NameIdx:             2,
-		PhoneIdx:            3,
+		AgeIdx:              3,
+		PhoneIdx:            4,
 		SocialLinkIdx:       5,
 		CityIdx:             6,
 		ExperienceAnswerIdx: 9,
 		Skip:                config.SkipSheet,
 	}
-	err = formUsers.AddUsers(gotSheet, &sheet1Config)
+	err = formUsers.AddUsers(gotSheet, &sheetConfig)
 	if err != nil {
 		logger.Fatalf("failed to make users map: %s", err)
 	}
