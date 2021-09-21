@@ -70,12 +70,14 @@ func (n notifier) Notify(users users.Users) error {
 			"Город: %s\n"+
 			"Телефон: %s\n "+
 			"Почта: %s\n "+
+			"Соцсети: %s\n "+
 			"Чего хочу: %s\n",
 			user.FullName,
 			user.Age,
 			user.City,
 			user.Phone,
 			user.Email,
+			user.SocialLink,
 			user.ExperienceAnswer)
 		terr := n.teleLog.SendMessage(msg)
 		if terr != nil {
