@@ -8,7 +8,7 @@ import (
 )
 
 func Test_sheet_GetSheetRange(t *testing.T) {
-	answersSheetId := "1qUZyR5ZOE0lWZCJ8lWvtYQ4FyuQXbhL9kOu5Jsm1rmQ"
+	answersSheetId := ""
 	answersReadRange := ""
 	sLoggerConfig := zap.NewDevelopmentConfig()
 	sLoggerConfig.DisableStacktrace = true
