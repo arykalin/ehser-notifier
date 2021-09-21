@@ -70,7 +70,7 @@ func main() {
 	// get answers
 	formUsers := users.NewUsers()
 
-	err = addUsersForm(s, config, logger, formUsers)
+	err = addUsers(s, config, logger, formUsers)
 
 	err = formUsers.DumpUsers()
 	if err != nil {
@@ -103,7 +103,7 @@ func main() {
 	}
 }
 
-func addUsersForm(s sheet.Sheet, config Config, logger *zap.SugaredLogger, formUsers users.UsersInt) error {
+func addUsers(s sheet.Sheet, config Config, logger *zap.SugaredLogger, formUsers users.UsersInt) error {
 	spreadsheet, err := s.GetSheet(config.AnswersSheetID)
 	if err != nil {
 		logger.Fatalf("failed to get sheet data: %s", err)
