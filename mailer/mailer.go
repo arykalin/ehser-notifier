@@ -125,6 +125,6 @@ func NewMailer(
 		SMTPPort:     port,
 		DebugAddress: debugAddress,
 		CCAddress:    ccAddress,
-		dryRun:       true,
+		dryRun:       false,
 	}
 }
