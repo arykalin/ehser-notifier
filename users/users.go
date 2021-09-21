@@ -3,7 +3,6 @@ package users
 import (
 	"encoding/json"
 	"io/ioutil"
-	"strings"
 
 	"gopkg.in/Iwark/spreadsheet.v2"
 )
@@ -65,7 +64,7 @@ func (u *users) AddUsers(sheet *spreadsheet.Sheet, config *SheetConfig) (err err
 			fullName = sheet.Rows[i][config.NameIdx].Value
 		}
 		user.FullName = fullName
-		user.Name = strings.Split(fullName, " ")[0]
+		user.Name = fullName
 
 		var age string
 		if len(sheet.Rows[i]) > config.AgeIdx {
