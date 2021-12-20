@@ -87,7 +87,7 @@ func (m mailer) sendMail(user users.User, subj string, body string) (err error) 
 }
 
 func (m mailer) makeBodyAndSubj(user users.User) (body string, subj string, err error) {
-	subj = fmt.Sprintf("Регистрация на осеннюю школу ЭШЭР Риск")
+	subj = fmt.Sprintf("Регистрация на зимнюю школу ЭШЭР Интуиция")
 	body, err = m.ParseTemplate(tmpltEsherRisk, user)
 	if err != nil {
 		return body, subj, err
