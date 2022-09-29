@@ -31,7 +31,7 @@ type Mailer interface {
 }
 
 const (
-	tmpltEsherRisk = "mailer/mails/template_esher_viskazivanie.html"
+	tmpltEsherRisk = "mailer/mails/template_esher_protivorechie.html"
 )
 
 func (m mailer) SendGreeting(user users.User) (err error) {
