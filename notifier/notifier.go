@@ -53,17 +53,17 @@ func (n notifier) Notify(users users.Users) error {
 			continue
 		}
 		n.logger.Debugf("sending links to user %s", mail)
-		err = n.mailer.SendGreeting(user)
-		if err != nil {
-			msg := fmt.Sprintf("sending mail error mail: %s err: %s\n",
-				mail, err)
-			n.logger.Error(msg)
-			terr := n.teleLog.SendMessage(msg)
-			if terr != nil {
-				n.logger.Errorw("sending telegram message error", "err", err)
-			}
-			continue
-		}
+		//err = n.mailer.SendGreeting(user)
+		//if err != nil {
+		//	msg := fmt.Sprintf("sending mail error mail: %s err: %s\n",
+		//		mail, err)
+		//	n.logger.Error(msg)
+		//	terr := n.teleLog.SendMessage(msg)
+		//	if terr != nil {
+		//		n.logger.Errorw("sending telegram message error", "err", err)
+		//	}
+		//	continue
+		//}
 		msg := fmt.Sprintf("Новая заявка\n"+
 			"Имя: %s\n "+
 			"Возраст: %s\n "+
