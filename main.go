@@ -19,17 +19,18 @@ import (
 )
 
 type Config struct {
-	AnswersSheetID   string `yaml:"sheet_answers"`
-	SkipSheet        int    `yaml:"sheet_skip"`
-	MailUser         string `yaml:"mail_user"`
-	MailPassword     string `yaml:"mail_password"`
-	MailHost         string `yaml:"mail_host"`
-	MailPort         int    `yaml:"mail_port"`
-	MailDebugAddress string `yaml:"mail_debug_address"`
-	MailCCAddress    string `yaml:"mail_cc_address"`
-	SentFile         string `yaml:"sent_file"`
-	TeleToken        string `yaml:"telegram_token"`
-	TeleChatID       int64  `yaml:"telegram_chat_id"`
+	AnswersSheetID    string `yaml:"sheet_answers"`
+	AnswersSheetIndex int    `yaml:"sheet_answers_index"`
+	SkipSheet         int    `yaml:"sheet_skip"`
+	MailUser          string `yaml:"mail_user"`
+	MailPassword      string `yaml:"mail_password"`
+	MailHost          string `yaml:"mail_host"`
+	MailPort          int    `yaml:"mail_port"`
+	MailDebugAddress  string `yaml:"mail_debug_address"`
+	MailCCAddress     string `yaml:"mail_cc_address"`
+	SentFile          string `yaml:"sent_file"`
+	TeleToken         string `yaml:"telegram_token"`
+	TeleChatID        int64  `yaml:"telegram_chat_id"`
 }
 
 func main() {
@@ -108,7 +109,7 @@ func addUsers(s sheet.Sheet, config Config, logger *zap.SugaredLogger, formUsers
 	if err != nil {
 		logger.Fatalf("failed to get sheet data: %s", err)
 	}
-	gotSheet, err := spreadsheet.SheetByIndex(0)
+	gotSheet, err := spreadsheet.SheetByIndex(uint(config.AnswersSheetIndex))
 	if err != nil {
 		logger.Fatalf("failed to get sheet data: %s", err)
 	}
